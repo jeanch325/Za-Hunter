@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
-
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
@@ -23,9 +23,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsUserLocation = true
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
+        mapView.delegate = self
         
     }
-
+    
     //zooms in on current location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first!
@@ -33,6 +34,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let span = MKCoordinateSpanMake(0.025, 0.025) //span
         let region = MKCoordinateRegionMake(center, span) //the region is the distance of the span from the center
         mapView.setRegion(region, animated: true)
+    }
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = "pizza"
+        request.region = region
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            if let response = response {
+                for mapItem in response.mapItems {
+                    print(mapItem.name!)
+                }
+            }
+        }
         
     }
     
@@ -40,7 +55,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
