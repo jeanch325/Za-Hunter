@@ -43,9 +43,54 @@
                     <view key="view" contentMode="scaleToFill" id="tNl-uk-Z6a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7q-F2-WPs">
+                                <rect key="frame" x="87" y="164" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Z5a-7d-u0Y"/>
+                                    <constraint firstAttribute="width" constant="200" id="boe-xo-JK4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAW-Hu-jMO">
+                                <rect key="frame" x="87" y="258.5" width="200" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="A4e-tO-OdS"/>
+                                    <constraint firstAttribute="height" constant="150" id="udK-dd-cNH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yx-Zh-1nD">
+                                <rect key="frame" x="87" y="453.5" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2Ig-yL-Ob3"/>
+                                    <constraint firstAttribute="width" constant="200" id="b3i-bl-uy3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4Yx-Zh-1nD" firstAttribute="centerX" secondItem="tNl-uk-Z6a" secondAttribute="centerX" id="92W-wN-VPs"/>
+                            <constraint firstItem="UAW-Hu-jMO" firstAttribute="centerY" secondItem="tNl-uk-Z6a" secondAttribute="centerY" id="ORI-2b-P3d"/>
+                            <constraint firstItem="4Yx-Zh-1nD" firstAttribute="top" secondItem="UAW-Hu-jMO" secondAttribute="bottom" constant="45" id="PM1-h8-jXU"/>
+                            <constraint firstItem="UAW-Hu-jMO" firstAttribute="centerX" secondItem="tNl-uk-Z6a" secondAttribute="centerX" id="SCG-oU-jjd"/>
+                            <constraint firstItem="UAW-Hu-jMO" firstAttribute="top" secondItem="F7q-F2-WPs" secondAttribute="bottom" constant="45" id="WeR-5z-hAJ"/>
+                            <constraint firstItem="F7q-F2-WPs" firstAttribute="centerX" secondItem="tNl-uk-Z6a" secondAttribute="centerX" id="p3a-On-eCi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hsQ-DT-YmW"/>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="UAW-Hu-jMO" id="Z08-NZ-oU2"/>
+                        <outlet property="nameLabel" destination="F7q-F2-WPs" id="RwK-Pm-yOe"/>
+                        <outlet property="phoneLabel" destination="4Yx-Zh-1nD" id="C3o-nr-vGB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncP-wy-JRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
