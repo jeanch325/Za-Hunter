@@ -16,6 +16,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     let locationManager = CLLocationManager()
     var region = MKCoordinateRegion()
+    var mapItems = [MKMapItem]()
+    var selectedMapItem = MKMapItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +38,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.setRegion(region, animated: true)
     }
     
+    //find all locations on map w key word pizza and name them w their names
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = "pizza"
         request.region = region
         let search = MKLocalSearch(request: request)
+        
         search.start { (response, error) in
             if let response = response {
                 for mapItem in response.mapItems {
@@ -48,11 +52,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     annotation.coordinate = mapItem.placemark.coordinate
                     annotation.title = mapItem.name
                     self.mapView.addAnnotation(annotation)
+                    self.mapItems.append(mapItem)
                 }
             }
         }
         
     }
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -69,8 +75,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return pinView
         }
     
+    //programatically calling segue when the accessory is tapped
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         performSegue(withIdentifier: "ShowLocationDetailsSegue", sender: nil)
+    }
+  
+    //if the mapItem's location matches up w the view's location holder, then the mapItem is correct. Pass information from pizza website thingy to pinpoint
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        for mapItem in mapItems {
+            if mapItem.placemark.coordinate.latitude == view.annotation?.coordinate.latitude && mapItem.placemark.coordinate.longitude == view.annotation?.coordinate.longitude {
+                selectedMapItem = mapItem
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? LocationDetailsViewController {
+            destination.selectedMapItem = selectedMapItem
+        }
     }
     
     override func didReceiveMemoryWarning() {
