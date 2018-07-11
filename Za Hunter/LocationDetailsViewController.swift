@@ -14,7 +14,7 @@ class LocationDetailsViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
-    
+  
     var selectedMapItem = MKMapItem()
     
     override func viewDidLoad() {
@@ -36,6 +36,10 @@ class LocationDetailsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func onDirectionsButtonTapped(_ sender: Any) {
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking]
+        MKMapItem.openMaps(with: [selectedMapItem], launchOptions: launchOptions)
     }
     
     

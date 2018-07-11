@@ -74,14 +74,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sV1-fd-z8b">
+                                <rect key="frame" x="87" y="563" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7Qu-Rl-tCK"/>
+                                    <constraint firstAttribute="width" constant="200" id="QAT-aK-FWs"/>
+                                </constraints>
+                                <state key="normal" title="Directions">
+                                    <color key="titleColor" red="0.9806960227" green="0.9806960227" blue="0.9806960227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onDirectionsButtonTapped:" destination="oOp-Ie-QX2" eventType="touchUpInside" id="mWo-ao-qOm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4Yx-Zh-1nD" firstAttribute="centerX" secondItem="tNl-uk-Z6a" secondAttribute="centerX" id="92W-wN-VPs"/>
+                            <constraint firstItem="sV1-fd-z8b" firstAttribute="top" secondItem="4Yx-Zh-1nD" secondAttribute="bottom" constant="60" id="BSr-79-lUG"/>
                             <constraint firstItem="UAW-Hu-jMO" firstAttribute="centerY" secondItem="tNl-uk-Z6a" secondAttribute="centerY" id="ORI-2b-P3d"/>
                             <constraint firstItem="4Yx-Zh-1nD" firstAttribute="top" secondItem="UAW-Hu-jMO" secondAttribute="bottom" constant="45" id="PM1-h8-jXU"/>
                             <constraint firstItem="UAW-Hu-jMO" firstAttribute="centerX" secondItem="tNl-uk-Z6a" secondAttribute="centerX" id="SCG-oU-jjd"/>
                             <constraint firstItem="UAW-Hu-jMO" firstAttribute="top" secondItem="F7q-F2-WPs" secondAttribute="bottom" constant="45" id="WeR-5z-hAJ"/>
+                            <constraint firstItem="sV1-fd-z8b" firstAttribute="centerX" secondItem="tNl-uk-Z6a" secondAttribute="centerX" id="g7r-Ud-g73"/>
                             <constraint firstItem="F7q-F2-WPs" firstAttribute="centerX" secondItem="tNl-uk-Z6a" secondAttribute="centerX" id="p3a-On-eCi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hsQ-DT-YmW"/>
